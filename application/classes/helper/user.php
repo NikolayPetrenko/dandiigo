@@ -45,7 +45,7 @@ class Helper_User
             }
         }
     }
-    
+
     public static function autoAssignedClass($students_m, $students_w, $classes)
     {
         $students = array();
