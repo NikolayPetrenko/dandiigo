@@ -8,7 +8,8 @@ class Controller_Levels extends My_LoggedUserController {
     public function action_list()
     {
         if(Helper_User::getUserRole($this->logget_user) == 'student' || Helper_User::getUserRole($this->logget_user) == 'teacher') return $this->request->redirect('');
-        $data['years']  = Model_Level::get_min_max_student_year()[0];
+        $years          = Model_Level::get_min_max_student_year();
+        $data['years']  = $years[0];
         $data['year']   = $this->request->param('year') ? $this->request->param('year') : ORM::factory('academicyear')->where('name', '=', Helper_Main::getCurrentYear())->find()->id;
         $data['levels'] = ORM::factory('level')->order_by('order')->find_all();
         $data['user']   = $this->logget_user;
