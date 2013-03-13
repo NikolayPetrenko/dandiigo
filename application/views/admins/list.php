@@ -15,7 +15,7 @@
         <?php foreach ($admins as $admin): ?>
             <tr>
                 <th><?php echo $admin->username ?></th>
-                <th><?php echo $admin->name ?></th>
+                <th><?php echo $admin->name ?> <?php echo $admin->fathername ?> <?php echo $admin->grfathername ?></th>
                 <th><?php echo $admin->logins ?></th>
                 <th><?php echo $admin->last_login ?></th>
                 <th><?php echo Helper_User::getUserRole($admin) ?></th>

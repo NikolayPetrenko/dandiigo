@@ -7,7 +7,7 @@ class Controller_Financialrecords extends My_LoggedUserController {
      */
     public function action_list()
     {
-        if(Helper_User::getUserRole($this->logget_user) == 'student' && $this->logget_user->students->find()->student_id != $this->request->param('student')) return $this->request->redirect('');
+        if((Helper_User::getUserRole($this->logget_user) == 'student' && $this->logget_user->students->find()->student_id != $this->request->param('student')) || Helper_User::getUserRole($this->logget_user) == 'teacher') return $this->request->redirect('');
         $data['student'] = ORM::factory('student', $this->request->param('student'));
         $data['year']    = $this->request->param('year') ? $this->request->param('year') : $data['student']->end_year;
         $data['period']  = ORM::factory('setting', 'academic_year')->find()->value;

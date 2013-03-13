@@ -10,7 +10,7 @@ class Controller_Teachers extends My_LoggedUserController {
         if(Helper_User::getUserRole($this->logget_user) == 'student' || Helper_User::getUserRole($this->logget_user) == 'teacher') {
             return $this->request->redirect('');
         }
-        $data['teachers'] = ORM::factory('user')->select('dg_tchrs.name')->join('dg_tchrs')->on('user.id', '=', 'dg_tchrs.teacher_id')->order_by('status')->find_all();
+        $data['teachers'] = ORM::factory('user')->select('dg_tchrs.name', 'dg_tchrs.fathername', 'dg_tchrs.grfathername')->join('dg_tchrs')->on('user.id', '=', 'dg_tchrs.teacher_id')->order_by('status')->find_all();
         Helper_Output::factory()->link_css('bootstrap');
         $this->setTitle('Teachers')
                 ->view('teachers/list', $data)

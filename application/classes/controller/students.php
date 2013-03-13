@@ -7,10 +7,11 @@ class Controller_Students extends My_LoggedUserController {
      */
     public function action_list()
     {
-        if(Helper_User::getUserRole($this->logget_user) == 'student' || Helper_User::getUserRole($this->logget_user) == 'parent') {
+        if(Helper_User::getUserRole($this->logget_user) == 'student') {
             return $this->request->redirect('');
         }
-        $data['students'] = ORM::factory('user')->select('dg_stdnts.name', array('dg_lvls.name', 'level_name'))->join('dg_stdnts')->on('user.id', '=', 'dg_stdnts.student_id')->join('dg_lvls')->on('dg_stdnts.academic_year', '=', 'dg_lvls.id')->order_by('dg_lvls.order')->find_all();
+        $data['students'] = ORM::factory('user')->select('dg_stdnts.name', 'fathername', 'grfathername', array('dg_lvls.name', 'level_name'))->join('dg_stdnts')->on('user.id', '=', 'dg_stdnts.student_id')->join('dg_lvls')->on('dg_stdnts.academic_year', '=', 'dg_lvls.id')->order_by('dg_lvls.order')->find_all();
+        $data['user']  = $this->logget_user;
         Helper_Output::factory()->link_css('bootstrap');
         $this->setTitle('Students')
                 ->view('students/list', $data)
@@ -22,16 +23,17 @@ class Controller_Students extends My_LoggedUserController {
      */
     public function action_new()
     {
-        if(Helper_User::getUserRole($this->logget_user) == 'student' || Helper_User::getUserRole($this->logget_user) == 'parent') {
+        if(Helper_User::getUserRole($this->logget_user) == 'student') {
             return $this->request->redirect('');
         }
         $data = array();
         if ($this->request->post()) {
             try {
-                $_POST['username'] = mt_rand(100, 900) . 'user';
-                $dob               = $this->request->post('dob');
-                $_POST['password']         = date('dmy', strtotime($dob['ec']));
-                $_POST['password_confirm'] = date('dmy', strtotime($dob['ec']));
+                $_POST['username']         = mt_rand(100, 900) . 'user';
+                $dob                       = $this->request->post('dob');
+                $password                  = str_replace('-', '', $dob['gc']);
+                $_POST['password']         = $password;
+                $_POST['password_confirm'] = $password;
                 $_POST['change_password']  = 1;
                 $user = ORM::factory('user')->create_user($_POST, array('username', 'password', 'change_password'));
                 $user->add('roles', ORM::factory('Role')->where('name', '=', 'student')->find());
@@ -44,7 +46,7 @@ class Controller_Students extends My_LoggedUserController {
                 }
                 $year = ORM::factory('academicyear')->where('name', '=', Helper_Main::getCurrentYear())->find()->id;
                 $_POST['start_year'] = $_POST['end_year'] = $year;
-                ORM::factory('student')->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('student_id', 'academic_year', 'dob', 'sex', 'address', 'father', 'mother', 'quardian', 'tels_em', 'languages', 'health', 'siblings', 'name', 'image', 'start_year', 'end_year'))->create();
+                ORM::factory('student')->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('student_id', 'academic_year', 'dob', 'sex', 'address', 'father', 'mother', 'quardian', 'tels_em', 'languages', 'health', 'siblings', 'name', 'fathername', 'grfathername', 'image', 'start_year', 'end_year'))->create();
                 $this->request->redirect('students/list');
             }
             catch (ORM_Validation_Exception $e) {
@@ -62,19 +64,23 @@ class Controller_Students extends My_LoggedUserController {
      */
     public function action_edit()
     {
-        if(Helper_User::getUserRole($this->logget_user) == 'student' || Helper_User::getUserRole($this->logget_user) == 'parent') {
+        if(Helper_User::getUserRole($this->logget_user) == 'student') {
             return $this->request->redirect('');
         }
         if($this->request->post()){
+            if(Helper_User::getUserRole($this->logget_user) == 'teacher') {
+                return $this->request->redirect('');
+            }
             $student = ORM::factory('student')->where('student_id', '=', $this->request->param('id'))->find();
             if(!empty($_FILES['image']['name'])){
                 $_POST['image'] = Helper_Image::resize($_FILES['image'], '420', '320');
                 @unlink(Kohana::$config->load('config')->get('image_dir') . $student->image);
             }
-            $student->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('academic_year', 'dob', 'sex', 'address', 'father', 'mother', 'quardian', 'tels_em', 'languages', 'health', 'siblings', 'name', 'image'))->update();
+            $student->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('academic_year', 'dob', 'sex', 'address', 'father', 'mother', 'quardian', 'tels_em', 'languages', 'health', 'siblings', 'name', 'fathername', 'grfathername', 'image'))->update();
             $data['success'] = 'Student successful edit';
         }
-        $data['user']     = ORM::factory('user', $this->request->param('id'));
+        $data['teacher']   = Helper_User::getUserRole($this->logget_user) == 'teacher' ? TRUE : FALSE;
+        $data['user']      = ORM::factory('user', $this->request->param('id'));
         if(empty($data['user']->id)) $this->request->redirect('');
         $data['user_data'] = Helper_Main::unserializeData(Helper_User::getUserData($data['user'])->as_array());
         Helper_Output::factory()->link_js('user/index')->link_js('user/students');

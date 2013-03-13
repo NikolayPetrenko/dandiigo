@@ -37,10 +37,11 @@ class Controller_Session extends My_UserController {
         $data = array();
         if ($this->request->post()) {
             try {
-                $_POST['username'] = mt_rand(100, 900) . 'user';
-                $dob               = $this->request->post('dob');
-                $_POST['password']         = date('dmy', strtotime($dob['ec']));
-                $_POST['password_confirm'] = date('dmy', strtotime($dob['ec']));
+                $_POST['username']         = mt_rand(100, 900) . 'user';
+                $dob                       = $this->request->post('dob');
+                $password                  = str_replace('-', '', $dob['gc']);
+                $_POST['password']         = $password;
+                $_POST['password_confirm'] = $password;
                 $_POST['change_password']  = 1;
                 $user = ORM::factory('user')->create_user($_POST, array('username', 'password', 'change_password'));
                 $user->add('roles', ORM::factory('Role')->where('name', '=', 'student')->find());
@@ -50,7 +51,7 @@ class Controller_Session extends My_UserController {
                 if(!empty($_FILES['image']['name'])){
                     $_POST['image'] = Helper_Image::resize($_FILES['image'], '420', '320');
                 }
-                ORM::factory('student')->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('student_id', 'academic_year', 'dob', 'sex', 'address', 'father', 'mother', 'quardian', 'tels_em', 'languages', 'health', 'siblings', 'name', 'image'))->create();
+                ORM::factory('student')->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('student_id', 'academic_year', 'dob', 'sex', 'address', 'father', 'mother', 'quardian', 'tels_em', 'languages', 'health', 'siblings', 'name', 'fathername', 'grfathername', 'image'))->create();
                 Session::instance()->set('login', $user->username);
                 $this->request->redirect('thankyou');
             }

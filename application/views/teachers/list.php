@@ -16,7 +16,7 @@
         <?php foreach ($teachers as $teacher): ?>
             <tr>
                 <th><?php echo $teacher->username ?></th>
-                <th><?php echo $teacher->name ?></th>
+                <th><?php echo $teacher->name ?> <?php echo $teacher->fathername ?> <?php echo $teacher->grfathername ?></th>
                 <th><?php echo $teacher->logins ?></th>
                 <th><?php echo $teacher->last_login ?></th>
                 <th>

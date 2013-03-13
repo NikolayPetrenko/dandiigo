@@ -123,12 +123,14 @@
                     <label for="qualification_<?php echo $key ?>_year">Year of Completion:</label>
                     <input type="text" name="qualification[<?php echo $key ?>][year]" id="qualification_<?php echo $key ?>_year" value="<?php echo $qualification['year'] ?>">
                 </div>
+                <?php /*
                 <div class="group-field-block">
                     <label for="qualification_<?php echo $key ?>_grade">Grade & section</label>
                     <input type="text" name="qualification[<?php echo $key ?>][grade]" id="qualification_<?php echo $key ?>_grade" value="<?php echo $qualification['grade'] ?>">
                     <label for="qualification_<?php echo $key ?>_relation">Relation</label>
                     <input type="text" name="qualification[<?php echo $key ?>][relation]" id="qualification_<?php echo $key ?>_relation" value="<?php echo $qualification['relation'] ?>">
                 </div>
+                 */ ?>
             </div>
         <?php endforeach; ?>
         </div>
@@ -140,6 +142,12 @@
         <div class="experiences">
         <?php foreach($user_data['experience'] as $key => $experience): ?>
             <div class="experience">
+                <div class="group-field-block">
+                    <label for="experience_<?php echo $key ?>_yfr">Year from:</label>
+                    <input type="text" name="experience[<?php echo $key ?>][yfr]" id="experience_<?php echo $key ?>_yfr" value="<?php echo $experience['yfr'] ?>">
+                    <label for="experience_<?php echo $key ?>_yto">To:</label>
+                    <input type="text" name="experience[<?php echo $key ?>][yto]" id="experience_<?php echo $key ?>_yto" value="<?php echo $experience['yto'] ?>">                    
+                </div>                
                 <div class="group-field-block">
                     <label for="experience_<?php echo $key ?>_pw">Place of work:</label>
                     <input type="text" name="experience[<?php echo $key ?>][pw]" id="experience_<?php echo $key ?>_pw" value="<?php echo $experience['pw'] ?>">

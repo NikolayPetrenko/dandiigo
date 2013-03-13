@@ -1,5 +1,5 @@
 <h2>Academic Records</h2>
-<h3>Name: <?php echo $student->user->username ?> (<?php echo $student->name ?>)</h3>
+<h3>Name: <?php echo $student->user->username ?> (<?php echo $student->name ?> <?php echo $student->fathername ?> <?php echo $student->grfathername ?>)</h3>
 <?php if(Helper_User::getUserRole($user) != 'student'): ?>
     <?php if(!empty($subjects) && count($subjects) > 0): ?>
         <h3>Current Class: <?php echo $student->class->level->name . $student->class->name ?></h3>

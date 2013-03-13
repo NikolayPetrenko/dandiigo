@@ -1,5 +1,5 @@
 <h2>Achievement Records</h2>
-<h3><?php echo $teacher->user->username ?> (<?php echo $teacher->name ?>)</h3>
+<h3><?php echo $teacher->user->username ?> (<?php echo $teacher->name ?> <?php echo $teacher->fathername ?> <?php echo $teacher->grfathername ?>)</h3>
 <?php if(Helper_User::getUserRole($user) != 'teacher'): ?>
     <a href="<?php echo URL::base() ?>achievement-teacher-records/new/<?php echo $teacher->teacher_id ?>">Create record</a>
 <?php endif; ?>
@@ -20,9 +20,9 @@
             <tr>
                <th>Date</th>
                <th>Achievement</th>
-               <th>Notes</th>
                <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin'): ?>
-                   <th></th>
+                    <th>Notes</th>
+                    <th></th>
                <?php endif; ?>
             </tr> 
         </thead>
@@ -31,8 +31,8 @@
                 <tr>
                     <th><?php echo date('d-m-y', $record->date) ?></th>
                     <th><?php echo $record->achievement ?></th>
-                    <th><?php echo $record->notes ?></th>
                     <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin'): ?>
+                        <th><?php echo $record->notes ?></th>
                         <th><a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>achievement-teacher-records/delete/<?php echo $record->id ?>/<?php echo $teacher->teacher_id ?>/<?php echo $year ?>" class="delete-subj"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a></th>
                     <?php endif; ?>
                 </tr>

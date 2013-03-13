@@ -1,5 +1,5 @@
 <h2>Disciplinary Records</h2>
-<h3><?php echo $student->user->username ?> (<?php echo $student->name ?>)</h3>
+<h3><?php echo $student->user->username ?> (<?php echo $student->name ?> <?php echo $student->fathername ?> <?php echo $student->grfathername ?>)</h3>
 <?php if(Helper_User::getUserRole($user) != 'student'): ?>
     <a href="<?php echo URL::base() ?>disciplinary-records/new/<?php echo $student->student_id ?>">Create record</a>
 <?php endif;?>
@@ -20,10 +20,10 @@
             <tr>
                <th>Date</th>
                <th>Record</th>
-               <th>Notes</th>
                <?php if(Helper_User::getUserRole($user) != 'student'): ?>
-                   <th>Action (office Notes)</th>
+                    <th>Notes</th>
                <?php endif; ?>
+               <th>Action</th>
                <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin'): ?>
                    <th></th>
                <?php endif; ?>
@@ -34,10 +34,10 @@
                 <tr>
                     <th><?php echo date('d-m-y', $record->date) ?></th>
                     <th><?php echo $record->record ?></th>
-                    <th><?php echo $record->notes ?></th>
                     <?php if(Helper_User::getUserRole($user) != 'student'): ?>
-                        <th><?php echo $record->action ?></th>
+                        <th><?php echo $record->notes ?></th>
                     <?php endif;?>
+                    <th><?php echo $record->action ?></th>
                     <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin'): ?>
                         <th><a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>disciplinary-records/delete/<?php echo $record->id ?>/<?php echo $student->student_id ?>/<?php echo $year ?>" class="delete-subj"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a></th>
                     <?php endif; ?>

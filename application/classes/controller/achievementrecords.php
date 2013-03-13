@@ -30,6 +30,7 @@ class Controller_Achievementrecords extends My_LoggedUserController {
                 $_POST['date']       = !empty($_POST['date']) ? strtotime($_POST['date']) : time();
                 $_POST['year_id']    = $data['student']->end_year;
                 $_POST['student_id'] = $data['student']->student_id;
+                if(Helper_User::getUserRole($this->logget_user) != 'sadmin') $_POST['notes'] = '';
                 ORM::factory('record_achievement')->values($_POST, array('achievement', 'notes', 'date', 'year_id', 'student_id'))->create();
                 $this->request->redirect('achievement-records/list/' . $data['student']->student_id . '/' . $_POST['year_id']);                
             }
@@ -37,6 +38,7 @@ class Controller_Achievementrecords extends My_LoggedUserController {
                 $data['errors'] = Helper_Main::errors($e->errors('validation'));
             }
         }
+        $data['user']    = $this->logget_user;
         Helper_Output::factory()->link_js('record/index');
         $this->setTitle('New Records')
             ->view('achievementrecords/newRecord', $data)

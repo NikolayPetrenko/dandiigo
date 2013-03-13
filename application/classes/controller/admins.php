@@ -8,7 +8,7 @@ class Controller_Admins extends My_LoggedUserController {
     public function action_list()
     {
         if(Helper_User::getUserRole($this->logget_user) != 'sadmin') return $this->request->redirect('');
-        $data['admins'] = ORM::factory('user')->select('dg_admns.name')->join('dg_admns')->on('user.id', '=', 'dg_admns.admin_id')->order_by('status')->find_all();
+        $data['admins'] = ORM::factory('user')->select('dg_admns.name', 'dg_admns.fathername', 'dg_admns.grfathername')->join('dg_admns')->on('user.id', '=', 'dg_admns.admin_id')->order_by('status')->find_all();
         Helper_Output::factory()->link_css('bootstrap');
         $this->setTitle('Admins')
                 ->view('admins/list', $data)

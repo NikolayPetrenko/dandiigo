@@ -9,9 +9,9 @@ class Model_Record_Achievement extends ORM {
             return array(
                     'achievement' => array(
                             array('not_empty')),
-                    'notes' => array(
-                            array('not_empty')                        
-                    ),
+//                    'notes' => array(
+//                            array('not_empty')                        
+//                    ),
             );
     }
 }

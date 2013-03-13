@@ -3,11 +3,13 @@
     <?php if(!is_null($user->students->find()->class_id)): ?>
         <p>Current class: <a href="<?php echo URL::base() ?>classes/view/<?php echo $user->students->find()->class_id ?>"><?php echo $user->students->find()->class->level->name . $user->students->find()->class->name ?></a></p>
     <?php endif;?>
-    <a href="<?php echo URL::base() ?>academic-records/list/<?php echo $user->students->find()->student_id ?>">Academic Record</a> 
+    <a href="<?php echo URL::base() ?>academic-records/list/<?php echo $user->id ?>">Academic Record</a> 
     <br>
-    <a href="<?php echo URL::base() ?>achievement-records/list/<?php echo $user->students->find()->student_id ?>">Achievement Record</a>
+    <a href="<?php echo URL::base() ?>achievement-records/list/<?php echo $user->id ?>">Achievement Record</a>
     <br>
-    <a href="<?php echo URL::base() ?>disciplinary-records/list/<?php echo $user->students->find()->student_id ?>">Disciplinary Record</a>         
+    <a href="<?php echo URL::base() ?>disciplinary-records/list/<?php echo $user->id ?>">Disciplinary Record</a>
+    <br>
+    <a href="<?php echo URL::base() ?>financial-records/list/<?php echo $user->id ?>">Financial Record</a>
 <?php endif; ?>
 <p>You are <strong><?php echo Helper_User::getUserRole($user) ?></p>
 <?php if(Helper_User::getUserRole($user) == 'teacher'): ?>

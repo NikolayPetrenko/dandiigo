@@ -1,5 +1,5 @@
 <h2>Financial Records</h2>
-<h3>Name: <?php echo $student->user->username ?> (<?php echo $student->name ?>)</h3>
+<h3>Name: <?php echo $student->user->username ?> (<?php echo $student->name ?> <?php echo $student->fathername ?> <?php echo $student->grfathername ?>)</h3>
 <br>
 <form name="form_year" id="form_year" action="<?php echo URL::base() ?>financial-records/list/<?php echo $student->student_id ?>">
     <select name="year" id="year">
@@ -174,8 +174,9 @@
         </div>
     </form>
 <?php endif; ?>
-
-<?php if(!empty($accounting)): ?>
+<?php if($scholarship == 1): ?>
+    <p><strong>The student receives a scholarship</strong></p>
+<?php elseif(!empty($accounting)): ?>
     <p>1) <strong><?php echo $not_paid_count == 0 ? 'No outstanding Fees' : $not_paid_count * $annual_period . ' outstanding Fees'?></strong></p>
     <br>
     <p>2) <strong><?php echo $paid_count == 0 ? 'No Paid' : $paid_count * $annual_period . ' Paid'?></strong></p>

@@ -13,20 +13,20 @@
             <input type="text" name="name" id="name" value="<?php echo Helper_Main::getPostValue('name') ?>">
         </div>
         <div class="group-field-block">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-        </div>
-        <div class="group-field-block">
-            <label for="password_confirm">Confirm password</label>
-            <input type="password" name="password_confirm" id="password_confirm">
-        </div>
-        <div class="group-field-block">
             <label for="fathername">Father's Name</label>
             <input type="text" name="fathername" id="fathername" value="<?php echo Helper_Main::getPostValue('fathername') ?>">
         </div>
         <div class="group-field-block">
             <label for="grfathername">Grand Father's Name</label>
             <input type="text" name="grfathername" id="grfathername" value="<?php echo Helper_Main::getPostValue('grfathername') ?>">
+        </div>
+        <div class="group-field-block">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div class="group-field-block">
+            <label for="password_confirm">Confirm password</label>
+            <input type="password" name="password_confirm" id="password_confirm">
         </div>
     </fieldset>
     
@@ -40,7 +40,7 @@
     <fieldset style="margin-top: 20px">
         <div class="group-field-block">
             <label for="dob">Date of birth (E.C) </label>
-            <input type="text" name="dob" id="dob" value="<?php echo Helper_Main::getPostValue('dob') ? Helper_Main::getPostValue('dob') : date('m/d/Y') ?>">
+            <input type="text" name="dob" id="dob" value="<?php echo Helper_Main::getPostValue('dob') ? Helper_Main::getPostValue('dob') : '' ?>">
             <label for="sex">Sex</label>
             <select name="sex" id="sex">
                 <option value="0" <?php echo Helper_Main::getPostValue('sex') == '0' ? 'selected': '' ?>>Male</option>
@@ -129,12 +129,14 @@
                     <label for="qualification_0_year">Year of Completion:</label>
                     <input type="text" name="qualification[0][year]" id="qualification_0_year" value="<?php echo Helper_Main::getPostValue('qualification.0.year') ?>">
                 </div>
+                <?php /*
                 <div class="group-field-block">
                     <label for="qualification_0_grade">Grade & section</label>
                     <input type="text" name="qualification[0][grade]" id="qualification_0_grade" value="<?php echo Helper_Main::getPostValue('qualification.0.grade') ?>">
                     <label for="qualification_0_relation">Relation</label>
                     <input type="text" name="qualification[0][relation]" id="qualification_0_relation" value="<?php echo Helper_Main::getPostValue('qualification.0.relation') ?>">
                 </div>
+                */ ?>
             </div>
         </div>
         <a href="#" id="more-qualification"><img src="<?php echo URL::base() ?>img/add_icon.png"></a>
@@ -144,6 +146,12 @@
         <legend><strong>Experience:</strong></legend>
         <div class="experiences">
             <div class="experience">
+                <div class="group-field-block">
+                    <label for="experience_0_yfr">Year from:</label>
+                    <input type="text" name="experience[0][yfr]" id="experience_0_yfr" value="<?php echo Helper_Main::getPostValue('experience.0.yfr') ?>">
+                    <label for="experience_0_yto">To:</label>
+                    <input type="text" name="experience[0][yto]" id="experience_0_yto" value="<?php echo Helper_Main::getPostValue('experience.0.yto') ?>">
+                </div>
                 <div class="group-field-block">
                     <label for="experience_0_pw">Place of work:</label>
                     <input type="text" name="experience[0][pw]" id="experience_0_pw" value="<?php echo Helper_Main::getPostValue('experience.0.pw') ?>">

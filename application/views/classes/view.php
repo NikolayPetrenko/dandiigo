@@ -8,7 +8,7 @@
                 <select name="teacher">
                     <option <?php echo $class->teacher_id == 0 ? 'selected' : '' ?> value="0">None</option>
                     <?php foreach($all_teachers as $tchr): ?>
-                        <option <?php echo $tchr->teacher_id == $class->teacher_id ? 'selected' : '' ?> value="<?php echo $tchr->teacher_id ?>"><?php echo $tchr->name . ' (' . $tchr->user->username . ')' ?></option>
+                        <option <?php echo $tchr->teacher_id == $class->teacher_id ? 'selected' : '' ?> value="<?php echo $tchr->teacher_id ?>"><?php echo $tchr->name . ' ' . $tchr->fathername . ' ' . $tchr->grfathername . ' (' . $tchr->user->username . ')' ?></option>
                     <?php endforeach; ?>
                 </select>
                 <br>
@@ -61,7 +61,7 @@
                                 <select name="teacher" <?php echo Helper_User::getUserRole($user) == 'admin' || Helper_User::getUserRole($user) == 'sadmin' ? '' : 'disabled' ?>>
                                     <option <?php echo $subject->teacher_id == 0 ? 'selected' : '' ?> value="0">None</option>
                                     <?php foreach($teachers as $teacher): ?>
-                                        <option <?php echo $subject->teacher_id == $teacher->teacher_id ? 'selected' : '' ?> value="<?php echo $teacher->teacher_id ?>"><?php echo $teacher->name . ' (' . $teacher->user->username . ')' ?></option>
+                                        <option <?php echo $subject->teacher_id == $teacher->teacher_id ? 'selected' : '' ?> value="<?php echo $teacher->teacher_id ?>"><?php echo $teacher->name . ' ' . $teacher->fathername . ' ' . $teacher->grfathername . ' (' . $teacher->user->username . ')' ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <?php if(Helper_User::getUserRole($user) == 'admin' || Helper_User::getUserRole($user) == 'sadmin'): ?>
@@ -150,7 +150,7 @@
                             <?php if(Helper_Main::getStatusForPromotion($student->student_id)): ?>
                                 <a href="<?php echo URL::base() ?>levels/promoting-detaining/prom/<?php echo $student->student_id ?>">Promoting</a> - 
                             <?php endif; ?>
-                            <a href="<?php echo URL::base() ?>levels/promoting-detaining/det/<?php echo $student->student_id ?>">Detaining</a>                             
+                            <a href="<?php echo URL::base() ?>levels/promoting-detaining/det/<?php echo $student->student_id ?>">Detaining</a>
                         </th>
                         <?php endif; ?>
                     </tr>
@@ -167,5 +167,7 @@
     <br>
     <a href="<?php echo URL::base() ?>achievement-records/list/<?php echo $user->students->find()->student_id ?>">Achievement Record</a> - 
     <br>
-    <a href="<?php echo URL::base() ?>disciplinary-records/list/<?php echo $user->students->find()->student_id ?>">Disciplinary Record</a>         
+    <a href="<?php echo URL::base() ?>disciplinary-records/list/<?php echo $user->students->find()->student_id ?>">Disciplinary Record</a> -
+    <br>
+    <a href="<?php echo URL::base() ?>financial-records/list/<?php echo $user->students->find()->student_id ?>">Financial</a>
 <?php endif; ?>

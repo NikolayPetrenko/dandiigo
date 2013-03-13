@@ -149,9 +149,9 @@ class Helper_Main
         return $string;
     }
     
-    public static function getClass($level, $name)
+    public static function getClass($level, $name, $year)
     {
-        $class = $level->template_classes->where('name', '=', $name)->find();
+        $class = $level->template_classes->where('year_id', '=', $year)->where('name', '=', $name)->find();
         return !empty($class->id) ? $class->id : FALSE;
     }
     

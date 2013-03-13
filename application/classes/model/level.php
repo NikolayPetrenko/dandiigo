@@ -23,4 +23,12 @@ class Model_Level extends ORM {
                     ),
             );
     }
+    
+    public static function get_min_max_student_year()
+    {
+        return DB::select(array('MAX("end_year")', 'max_year'),array('MIN("end_year")', 'min_year'))
+                   ->from('dg_stdnts')
+                   ->as_object()->execute()->as_array()
+                   ;
+    }
 }

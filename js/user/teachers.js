@@ -54,6 +54,8 @@ var teacher = {
             e.preventDefault();
             var experiences = $('.experiences');
             var exp         = $('.experience').clone()[0];
+            var exp_yfr     = $(exp).find('#experience_0_yfr');
+            var exp_yto     = $(exp).find('#experience_0_yto');
             var exp_pw      = $(exp).find('#experience_0_pw');
             var exp_job     = $(exp).find('#experience_0_job');
             var exp_contact = $(exp).find('#experience_0_contact');
@@ -61,7 +63,17 @@ var teacher = {
             var exp_to      = $(exp).find('#experience_0_to');
             var exp_tm      = $(exp).find('#experience_0_tm');
             var count       = $('.experience').length;
-            
+
+            exp_yfr.val('');
+            exp_yfr.attr('id', 'experience_' + count + '_yfr');
+            exp_yfr.prev().attr('for', 'experience_' + count + '_yfr');
+            exp_yfr.attr('name', 'experience[' + count + '][yfr]');
+
+            exp_yto.val('');
+            exp_yto.attr('id', 'experience_' + count + '_yto');
+            exp_yto.prev().attr('for', 'experience_' + count + '_yto');
+            exp_yto.attr('name', 'experience[' + count + '][yto]');
+
             exp_pw.val('');
             exp_pw.attr('id', 'experience_' + count + '_pw');
             exp_pw.prev().attr('for', 'experience_' + count + '_pw');

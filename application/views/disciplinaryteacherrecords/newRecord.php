@@ -5,7 +5,7 @@
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
-<h3>Create disciplinary record student <?php echo $teacher->user->username ?> (<?php echo $teacher->name ?>)</h3>
+<h3>Create disciplinary record student <?php echo $teacher->user->username ?> (<?php echo $teacher->name ?> <?php echo $teacher->fathername ?> <?php echo $teacher->grfathername ?>)</h3>
 <form class="form-registrate" name="disciplinary_teacher_record_new" action="<?php echo URL::base() ?>disciplinary-teacher-records/new/<?php echo $teacher->teacher_id ?>" method="POST">
     <fieldset>
         <div class="group-field-block">

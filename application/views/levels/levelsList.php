@@ -1,4 +1,13 @@
 <?php if(count($levels) > 0): ?>
+<?php if(!empty($years->max_year)): ?>
+    <form name="form_year" id="form_year" action="<?php echo URL::base() ?>levels/list" style="float: right">
+        <select name="year" id="year">
+            <?php for($i = $years->min_year; $i <= $years->max_year; $i++): ?>
+                <option <?php echo $i == $year ? 'selected' : '' ?> value="<?php echo $i ?>"><?php echo ORM::factory('academicyear', $i)->name ?>/<?php echo ORM::factory('academicyear', $i + 1)->name ?></option>
+            <?php endfor; ?>
+        </select>
+    </form>
+<?php endif; ?>
 <table class="table table-condensed">
         <thead>
             <tr>
@@ -16,20 +25,20 @@
         <?php foreach ($levels as $level): ?>
             <tr>
                 <th><?php echo $level->name ?></th>
-                <th><?php echo Helper_Main::getClass($level, 'A') ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'A') . '">View</a>' : '-' ?></th>
-                <th><?php echo Helper_Main::getClass($level, 'B') ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'B') . '">View</a>' : '-' ?></th>
-                <th><?php echo Helper_Main::getClass($level, 'C') ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'C') . '">View</a>' : '-' ?></th>
-                <th><?php echo Helper_Main::getClass($level, 'D') ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'D') . '">View</a>' : '-' ?></th>
-                <th><?php echo Helper_Main::getClass($level, 'E') ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'E') . '">View</a>' : '-' ?></th>
-                <th><?php echo Helper_Main::getClass($level, 'F') ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'F') . '">View</a>' : '-' ?></th>
+                <th><?php echo Helper_Main::getClass($level, 'A', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'A', $year) . '">View</a>' : '-' ?></th>
+                <th><?php echo Helper_Main::getClass($level, 'B', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'B', $year) . '">View</a>' : '-' ?></th>
+                <th><?php echo Helper_Main::getClass($level, 'C', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'C', $year) . '">View</a>' : '-' ?></th>
+                <th><?php echo Helper_Main::getClass($level, 'D', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'D', $year) . '">View</a>' : '-' ?></th>
+                <th><?php echo Helper_Main::getClass($level, 'E', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'E', $year) . '">View</a>' : '-' ?></th>
+                <th><?php echo Helper_Main::getClass($level, 'F', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'F', $year) . '">View</a>' : '-' ?></th>
                 <th>
-                    <a href="<?php echo URL::base() ?>levels/edit/<?php echo $level->id ?>">Edit</a>
+                    <a href="<?php echo URL::base() ?>levels/edit/<?php echo $level->id ?>/<?php echo $year ?>">Edit</a>
                     /
                     <?php if(Helper_User::getUserRole($user) == 'sadmin'): ?>
                     <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>levels/delete/<?php echo $level->id ?>">Delete</a>
                     /
                     <?php endif; ?>
-                    <a href="<?php echo URL::base() ?>levels/unassigned-students/<?php echo $level->id ?>">Unassigned students</a>
+                    <a href="<?php echo URL::base() ?>levels/unassigned-students/<?php echo $level->id ?>/<?php echo $year ?>">Unassigned students</a>
                 </th>
             </tr>
         <?php endforeach; ?>
@@ -39,5 +48,5 @@
     <p>The levels are not found</p>
 <?php endif; ?>
 <?php if(Helper_User::getUserRole($user) == 'sadmin'): ?>
-    <a href="<?php echo URL::base() ?>levels/new">Create level</a>
+    <a href="<?php echo URL::base() ?>levels/new/<?php echo $year ?>">Create level</a>
 <?php endif;?>

@@ -11,7 +11,7 @@ class Controller_Academicrecords extends My_LoggedUserController {
         $data['student'] = ORM::factory('student', $this->request->param('student'));
         $data['year']    = $this->request->param('year') ? $this->request->param('year') : $data['student']->end_year;
         $data['current_class'] = $data['student']->class_id;
-        if(is_null($data['student']->class->name) || ($this->request->param('year') && $this->request->param('year') != $data['student']->end_year)){
+        if(is_null($data['student']->class_id) || ($this->request->param('year') && $this->request->param('year') != $data['student']->end_year)){
             $data['subjects_records'] = ORM::factory('year_subject')->join('dg_acdmrcrds')->on('dg_acdmrcrds.subject', '=', 'year_subject.id')->where('year_subject.year_id', '=', $data['year'])->where('dg_acdmrcrds.student_id', '=', $data['student']->student_id)->order_by('year_subject.parent_subject')->group_by('dg_acdmrcrds.subject')->find_all();
             $data['class']            = count($data['subjects_records']) > 0 ? $data['subjects_records'][0]->class : '';
         }else{
@@ -46,8 +46,12 @@ class Controller_Academicrecords extends My_LoggedUserController {
         $data['subject_id']     = $subj_year->id;
         $data['period']         = Helper_Main::getObjectPeriod(ORM::factory('setting', 'academic_year')->find()->value);
         if ($this->request->post()) {
-            if(isset($_POST['percentage_ev']) && empty($_POST['percentage_ev'])){
-                $data['errors'] = array('Enter the percentage of');
+            if(isset($_POST['percentage_ev']) && ($_POST['percentage_ev'] == '' || !is_numeric($_POST['percentage_ev']))){
+                if($_POST['percentage_ev'] == '') {
+                    $data['errors'] = array('Enter the percentage of');
+                } elseif(!is_numeric($_POST['percentage_ev'])) {
+                    $data['errors'] = array('The percentage must be a number');
+                }
             }else{
                 $_POST['date']       = time();
                 $_POST['subject']    = $data['subject_id'];
@@ -86,8 +90,12 @@ class Controller_Academicrecords extends My_LoggedUserController {
                 $_POST['percentage_ev'] = NULL;
                 $_POST['letter_ev']     = NULL;
             }
-            if(isset($_POST['percentage_ev']) && empty($_POST['percentage_ev'])){
-                $data['errors'] = array('Enter the percentage of');
+            if(isset($_POST['percentage_ev']) && ($_POST['percentage_ev'] == '' || !is_numeric($_POST['percentage_ev']))){
+                if($_POST['percentage_ev'] == '') {
+                    $data['errors'] = array('Enter the percentage of');
+                } elseif(!is_numeric($_POST['percentage_ev'])) {
+                    $data['errors'] = array('The percentage must be a number');
+                }
             }else{
                 if(!empty($data['id'])){
                     ORM::factory('record_total', $data['id'])->values($_POST, array('letter_ev', 'comment_ev', 'percentage_ev'))->update();

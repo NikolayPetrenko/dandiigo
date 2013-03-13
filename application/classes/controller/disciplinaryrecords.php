@@ -30,6 +30,7 @@ class Controller_Disciplinaryrecords extends My_LoggedUserController {
                 $_POST['date'] = !empty($_POST['date']) ? strtotime($_POST['date']) : time();
                 $_POST['year_id']    = $data['student']->end_year;
                 $_POST['student_id'] = $data['student']->student_id;
+                if(Helper_User::getUserRole($this->logget_user) != 'sadmin') $_POST['notes']  = '';
                 ORM::factory('record_disciplinary')->values($_POST, array('record', 'notes', 'action', 'date', 'year_id', 'student_id'))->create();
                 $this->request->redirect('disciplinary-records/list/' . $data['student']->student_id . '/' . $_POST['year_id']);                
             }
@@ -37,6 +38,7 @@ class Controller_Disciplinaryrecords extends My_LoggedUserController {
                 $data['errors'] = Helper_Main::errors($e->errors('validation'));
             }
         }
+        $data['user'] = $this->logget_user;
         Helper_Output::factory()->link_js('record/index');
         $this->setTitle('New Records')
             ->view('disciplinaryrecords/newRecord', $data)

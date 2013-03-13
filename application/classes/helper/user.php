@@ -46,8 +46,20 @@ class Helper_User
         }
     }
     
-    public static function autoAssignedClass($students, $classes)
+    public static function autoAssignedClass($students_m, $students_w, $classes)
     {
+        $students = array();
+        if(count($students_m) > count($students_w)){
+            foreach ($students_m as $key => $value) {
+                $students[] = $value;
+                if(!empty($students_w[$key])) $students[] = $students_w[$key];
+            }
+        }else{
+            foreach ($students_w as $key => $value) {
+                $students[] = $value;
+                if(!empty($students_m[$key])) $students[] = $students_m[$key];
+            }            
+        }
         $i = 0;
         foreach ($students as $student){
             if(empty($classes[$i])) $i = 0;

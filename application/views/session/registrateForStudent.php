@@ -16,15 +16,23 @@
         </select>
     </div>
     <fieldset>
-        <div class="field-block">
-            <label for="name">Name of the students (with grandfather’s name) in block letters</label>
+        <div class="group-field-block">
+            <label for="name">Name</label>
             <input type="text" name="name" id="name" value="<?php echo Helper_Main::getPostValue('name') ?>">
         </div>
         <div class="group-field-block">
+            <label for="fathername">Father's Name</label>
+            <input type="text" name="fathername" id="fathername" value="<?php echo Helper_Main::getPostValue('fathername') ?>">
+        </div>
+        <div class="group-field-block">
+            <label for="grfathername">Grandfather's Name</label>
+            <input type="text" name="grfathername" id="grfathername" value="<?php echo Helper_Main::getPostValue('grfathername') ?>">
+        </div>
+        <div class="group-field-block">
             <label for="dob_ec">Date of birth (E.C)</label>
-            <input type="text" name="dob[ec]" id="dob_ec" value="<?php echo Helper_Main::getPostValue('dob.ec') ? Helper_Main::getPostValue('dob.ec') : date('m/d/Y') ?>">
+            <input type="text" name="dob[ec]" id="dob_ec" value="<?php echo Helper_Main::getPostValue('dob.ec') ? Helper_Main::getPostValue('dob.ec') : '' ?>">
             <label for="dob_gc">(G.C)</label>
-            <input type="text" name="dob[gc]" id="dob_gc" value="<?php echo Helper_Main::getPostValue('dob.gc') ? Helper_Main::getPostValue('dob.gc') : date('m/d/Y') ?>">
+            <input type="text" name="dob[gc]" id="dob_gc" value="<?php echo Helper_Main::getPostValue('dob.gc') ? Helper_Main::getPostValue('dob.gc') : date('d-m-y') ?>">
             <label for="sex">Sex</label>
             <select name="sex" id="sex">
                 <option value="0" <?php echo Helper_Main::getPostValue('sex') == '0' ? 'selected': '' ?>>Male</option>

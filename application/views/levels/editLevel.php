@@ -10,7 +10,7 @@
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
-<form class="form-registrate" name="level_edit" action="<?php echo URL::base() ?>levels/edit/<?php echo $level->id ?>" method="POST">
+<form class="form-registrate" name="level_edit" action="<?php echo URL::base() ?>levels/edit/<?php echo $level->id ?>/<?php echo $year ?>" method="POST">
     <fieldset>
         <div class="group-field-block">
             <label for="name"><strong>Name</strong></label>
@@ -81,5 +81,5 @@
         <?php endif; ?>
     </fieldset>
     <input type="submit" value="Edit level">
-    <input type="button" style="cursor: pointer" value="Cancel" onclick="javascript: location.href='<?php echo URL::base() ?>levels/list'">
+    <input type="button" style="cursor: pointer" value="Cancel" onclick="javascript: location.href='<?php echo URL::base() ?>levels/list/<?php echo $year ?>'">
 </form>

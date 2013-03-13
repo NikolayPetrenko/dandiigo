@@ -154,7 +154,7 @@ Route::set('register_student', 'student-registration')
 	));
 
 // router for move student
-Route::set('register_student', 'classes/move-student')
+Route::set('move_student', 'classes/move-student')
 	->defaults(array(
 		'controller' => 'classes',
 		'action'     => 'move_student'
@@ -203,22 +203,36 @@ Route::set('delete_subject', 'subjects/delete/<id>')
 		'action'     => 'delete'
 	));
 
+// router for list level
+Route::set('list_level', 'levels/list(/<year>)')
+	->defaults(array(
+		'controller' => 'levels',
+		'action'     => 'list'
+	));
+
 // router for edit level
-Route::set('edit_level', 'levels/edit/<id>')
+Route::set('edit_level', 'levels/edit/<id>/<year>')
 	->defaults(array(
 		'controller' => 'levels',
 		'action'     => 'edit'
 	));
 
+// router for edit level
+Route::set('new_level', 'levels/new/<year>')
+	->defaults(array(
+		'controller' => 'levels', 
+		'action'     => 'new'
+	));
+
 // router for auto assigned students
-Route::set('auto_assigned', 'levels/auto-assigned/<id>')
+Route::set('auto_assigned', 'levels/auto-assigned/<id>/<year>')
 	->defaults(array(
 		'controller' => 'levels',
 		'action'     => 'auto_assigned'
 	));
 
 // router for unassigned students
-Route::set('unassigned_students', 'levels/unassigned-students/<id>')
+Route::set('unassigned_students', 'levels/unassigned-students/<id>/<year>')
 	->defaults(array(
 		'controller' => 'levels',
 		'action'     => 'unassigned_students'

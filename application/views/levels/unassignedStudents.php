@@ -37,7 +37,7 @@
                     <?php endforeach; ?>
                     </tbody>
             </table>
-            <form name="auto_assigned" action="<?php echo URL::base() ?>levels/auto-assigned/<?php echo $level->id ?>" method="POST">
+            <form name="auto_assigned" action="<?php echo URL::base() ?>levels/auto-assigned/<?php echo $level->id ?>/<?php echo $year ?>" method="POST">
                 <input type="hidden" name="students" value="">
                 <input type="submit" value="Auto assigned">
             </form>

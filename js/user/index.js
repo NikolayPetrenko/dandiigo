@@ -27,9 +27,9 @@ student = {
 }
 
 $(function() {
-    $('#dob_ec').datepicker();
-    $('#dob_gc').datepicker();
-    $('#dob').datepicker();
+//    $('#dob_ec').datepicker();
+    $('#dob_gc').datepicker({ dateFormat: 'dd-mm-y' });
+//    $('#dob').datepicker();
     setTimeout(function(){
         $('.success').hide();
     }, 2000);

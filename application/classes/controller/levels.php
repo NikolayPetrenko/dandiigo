@@ -8,9 +8,11 @@ class Controller_Levels extends My_LoggedUserController {
     public function action_list()
     {
         if(Helper_User::getUserRole($this->logget_user) == 'student' || Helper_User::getUserRole($this->logget_user) == 'teacher') return $this->request->redirect('');
+        $data['years']  = Model_Level::get_min_max_student_year()[0];
+        $data['year']   = $this->request->param('year') ? $this->request->param('year') : ORM::factory('academicyear')->where('name', '=', Helper_Main::getCurrentYear())->find()->id;
         $data['levels'] = ORM::factory('level')->order_by('order')->find_all();
         $data['user']   = $this->logget_user;
-        Helper_Output::factory()->link_css('bootstrap');
+        Helper_Output::factory()->link_css('bootstrap')->link_js('level/index');
         $this->setTitle('Grade Levels')
                 ->view('levels/levelsList', $data)
                 ->render();
@@ -53,6 +55,7 @@ class Controller_Levels extends My_LoggedUserController {
     public function action_edit()
     {
         if(Helper_User::getUserRole($this->logget_user) == 'teacher' || Helper_User::getUserRole($this->logget_user) == 'student') return $this->request->redirect('');
+        $data['year']  = $this->request->param('year');
         if ($this->request->post()) {
             try {
                 $level = ORM::factory('level', $this->request->param('id'));
@@ -69,11 +72,15 @@ class Controller_Levels extends My_LoggedUserController {
                     $level->values($this->request->post(), array('name', 'order', 'annual', 'early_repayment'))->update();
                 }
                 if($this->request->post('classes')){
-                    foreach ($this->request->post('classes') as $value) {
+                    foreach ($this->request->post('classes') as $value){
                         $class           = ORM::factory('class_template');
                         $class->name     = $value;
                         $class->level_id = $level->id;
-                        $class->save();
+                        $class->year_id  = $data['year'];
+                        try{
+                            $class->save();
+                        }
+                        catch (Kohana_Database_Exception $e){}
                     }
                 }
                 if($this->request->post('old_classes')){
@@ -99,7 +106,7 @@ class Controller_Levels extends My_LoggedUserController {
         $data['user']  = $this->logget_user;
         $data['level'] = ORM::factory('level', $this->request->param('id'));
         if(empty($data['level']->id)) $this->request->redirect('');
-        $data['classes'] = $data['level']->template_classes->order_by('name')->find_all();
+        $data['classes'] = $data['level']->template_classes->where('year_id', '=', $data['year'])->order_by('name')->find_all();
         Helper_Output::factory()->link_js('class/templates');
         $this->setTitle('Edit Level')
             ->view('levels/editLevel', $data)
@@ -113,8 +120,9 @@ class Controller_Levels extends My_LoggedUserController {
     {
         if(Helper_User::getUserRole($this->logget_user) == 'teacher' || Helper_User::getUserRole($this->logget_user) == 'student') return $this->request->redirect('');
         $data['level']     = ORM::factory('level', $this->request->param('id'));
-        $data['all_class'] = $data['level']->template_classes->find_all();
-        $data['students']  = $data['level']->students->where('class_id', '=', NULL)->find_all();
+        $data['all_class'] = $data['level']->template_classes->where('year_id', '=', $this->request->param('year'))->find_all();
+        $data['students']  = $data['level']->students->where('end_year', '=', $this->request->param('year'))->where('class_id', '=', NULL)->find_all();
+        $data['year']      = $this->request->param('year');
         Helper_Output::factory()->link_js('user/index');
         $this->setTitle('Unassigned students')
             ->view('levels/unassignedStudents', $data)
@@ -131,9 +139,8 @@ class Controller_Levels extends My_LoggedUserController {
         $students_ids    = explode(',', $this->request->post('students'));
         $students_mens   = ORM::factory('student')->where('sex', '=', '0')->where('student_id', 'IN', $students_ids)->find_all();
         $students_womens = ORM::factory('student')->where('sex', '=', '1')->where('student_id', 'IN', $students_ids)->find_all();
-        $classes         = $data['level']->template_classes->find_all()->as_array();
-        Helper_User::autoAssignedClass($students_mens, $classes);
-        Helper_User::autoAssignedClass($students_womens, $classes);
+        $classes         = $data['level']->template_classes->where('year_id', '=', $this->request->param('year'))->find_all()->as_array();
+        Helper_User::autoAssignedClass($students_mens, $students_womens, $classes);
         $this->request->redirect('levels/list');
     }    
 
@@ -141,9 +148,10 @@ class Controller_Levels extends My_LoggedUserController {
     {
         if(Helper_User::getUserRole($this->logget_user) == 'student') return $this->request->redirect('');
         $student = ORM::factory('student')->where('student_id', '=', $this->request->param('student'))->find();
-        if(!Helper_Main::getStatusForPromotion($student->student_id)) return $this->request->redirect('');
+        if($this->logget_user->id != $student->class->teacher_id) return $this->request->redirect('');
         $student->class_id = NULL;
         if($this->request->param('type') == 'prom') {
+            if(!Helper_Main::getStatusForPromotion($student->student_id)) return $this->request->redirect('');
             $old_level = ORM::factory('level', $student->academic_year);
             if($old_level->order != ORM::factory('level')->count_all()){
                 $level = ORM::factory('level')->where('order', '=', $old_level->order + 1)->find();
