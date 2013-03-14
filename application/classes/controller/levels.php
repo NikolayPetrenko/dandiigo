@@ -149,15 +149,21 @@ class Controller_Levels extends My_LoggedUserController {
     {
         if(Helper_User::getUserRole($this->logget_user) == 'student') return $this->request->redirect('');
         $student = ORM::factory('student')->where('student_id', '=', $this->request->param('student'))->find();
-        if($this->logget_user->id != $student->class->teacher_id) return $this->request->redirect('');
+        if(Helper_User::getUserRole($this->logget_user) == 'teacher' && $this->logget_user->id != $student->class->teacher_id) return $this->request->redirect('');
         $student->class_id = NULL;
-        if($this->request->param('type') == 'prom') {
+        if($this->request->param('type') == 'prom'){
             if(!Helper_Main::getStatusForPromotion($student->student_id)) return $this->request->redirect('');
             $old_level = ORM::factory('level', $student->academic_year);
-            if($old_level->order != ORM::factory('level')->count_all()){
-                $level = ORM::factory('level')->where('order', '=', $old_level->order + 1)->find();
-                $student->academic_year = $level->id;
+            $levels = ORM::factory('level')->order_by('order')->find_all();
+            $new_level = NULL;
+            foreach($levels as $key => $level){
+                if($level->order == $old_level->order) {
+                    $lvl   = $levels[$key+1];
+                    $new_level = $lvl->id;
+                    break;
+                }
             }
+            $student->academic_year = $new_level;
         }
         $student->end_year = $student->end_year + 1;
         $student->save();

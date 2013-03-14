@@ -37,7 +37,8 @@ class Controller_Teachers extends My_LoggedUserController {
                 if(!empty($_FILES['image']['name'])){
                     $_POST['image'] = Helper_Image::resize($_FILES['image'], '420', '320');
                 }
-                ORM::factory('teacher')->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('teacher_id', 'fathername', 'grfathername', 'dob', 'sex', 'home_address', 'lpw', 'job', 'contact_name', 'address', 'telephone', 'emergency', 'languages', 'health', 'qualification', 'experience', 'name', 'image'))->create();
+                $_POST['start_year'] = ORM::factory('academicyear')->where('name', '=', Helper_Main::getCurrentYear())->find()->id;
+                ORM::factory('teacher')->values(Helper_Main::serializeData(Helper_Main::clean($_POST)), array('teacher_id', 'fathername', 'grfathername', 'dob', 'sex', 'home_address', 'lpw', 'job', 'contact_name', 'address', 'telephone', 'emergency', 'languages', 'health', 'qualification', 'experience', 'name', 'image', 'start_year'))->create();
                 $this->request->redirect('teachers/list');
             }
             catch (ORM_Validation_Exception $e) {

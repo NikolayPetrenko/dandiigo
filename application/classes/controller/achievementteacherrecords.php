@@ -47,7 +47,37 @@ class Controller_Achievementteacherrecords extends My_LoggedUserController {
             ->view('achievementteacherrecords/newRecord', $data)
             ->render();
     }
-    
+
+    /*
+     * Edit achievement teacher record
+     */
+    public function action_edit()
+    {
+        if(Helper_User::getUserRole($this->logget_user) == 'student' || Helper_User::getUserRole($this->logget_user) == 'teacher') {
+            return $this->request->redirect('');
+        }
+        $data['teacher'] = ORM::factory('teacher', $this->request->param('teacher'));
+        $data['year']    = $this->request->param('year');
+        $data['record']  = ORM::factory('record_teacher_achievement', $this->request->param('id'));
+        if ($this->request->post()) {
+            try {
+                $_POST['date']       = !empty($_POST['date']) ? strtotime($_POST['date']) : time();
+                $_POST['year_id']    = $this->request->param('year');
+                $_POST['teacher_id'] = $data['teacher']->teacher_id;
+                if(Helper_User::getUserRole($this->logget_user) != 'sadmin') $_POST['notes'] = '';
+                $data['record']->values($_POST, array('achievement', 'notes', 'date', 'year_id', 'student_id'))->update();
+                $this->request->redirect('achievement-teacher-records/list/' . $data['teacher']->teacher_id . '/' . $_POST['year_id']);
+            }
+            catch (ORM_Validation_Exception $e) {
+                $data['errors'] = Helper_Main::errors($e->errors('validation'));
+            }
+        }
+        $data['user']    = $this->logget_user;
+        Helper_Output::factory()->link_js('record/index');
+        $this->setTitle('Edit Records')
+            ->view('achievementteacherrecords/editRecord', $data)
+            ->render();
+    }
     
     /*
      * Delete achievement teacher record

@@ -3905,3 +3905,278 @@
 --
 #0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
 #1 {main}
+2013-03-13 09:55:01 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:01 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:22 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:22 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:24 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:24 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:26 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:26 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:30 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:30 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: css/images/ui-bg_flat_75_ffffff_40x100.png ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: css/images/ui-bg_flat_75_ffffff_40x100.png ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:32 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:32 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:44 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:44 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:55:46 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:55:46 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:57:28 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:57:28 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:57:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:57:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:57:33 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:57:33 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:57:49 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:57:49 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:57:58 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:57:58 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:58:05 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:58:05 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:58:09 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:58:09 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:58:19 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:58:19 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:58:20 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:58:20 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 09:58:23 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 09:58:23 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:23 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:23 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:24 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:24 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:25 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:25 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:27 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:27 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:29 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:29 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:33 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:33 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:36 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:36 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:38 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:38 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:40 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:40 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:41 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:41 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:44 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:44 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:46 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:46 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:04:59 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:04:59 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:05:06 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:05:06 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:05:08 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:05:08 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:09:53 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:09:53 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:09:56 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:09:56 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:09:59 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:09:59 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:18:29 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:18:29 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:18:45 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:18:45 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:18:49 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:18:49 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:18:50 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:18:50 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:18:54 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:18:54 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:24:56 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:24:56 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:24:59 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:24:59 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:25:01 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:25:01 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:25:02 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:25:02 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:25:02 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:25:02 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:25:05 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:25:05 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:25:07 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:25:07 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:26:05 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:26:05 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:26:06 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:26:06 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:26:08 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:26:08 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:26:12 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:26:12 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}
+2013-03-13 10:26:14 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+2013-03-13 10:26:14 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: favicon.ico ~ SYSPATH/classes/kohana/request.php [ 1142 ]
+--
+#0 /var/www/dandiigo/index.php(109): Kohana_Request->execute()
+#1 {main}

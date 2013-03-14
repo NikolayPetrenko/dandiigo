@@ -22,7 +22,7 @@
                <th>Achievement</th>
                <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin'): ?>
                     <th>Notes</th>
-                    <th></th>
+                    <th colspan="2"></th>
                <?php endif; ?>
             </tr> 
         </thead>
@@ -34,6 +34,7 @@
                     <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin'): ?>
                         <th><?php echo $record->notes ?></th>
                         <th><a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>achievement-teacher-records/delete/<?php echo $record->id ?>/<?php echo $teacher->teacher_id ?>/<?php echo $year ?>" class="delete-subj"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a></th>
+                        <th><a href="<?php echo URL::base() ?>achievement-teacher-records/edit/<?php echo $record->id ?>/<?php echo $teacher->teacher_id ?>/<?php echo $year ?>">Edit</a></th>
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>

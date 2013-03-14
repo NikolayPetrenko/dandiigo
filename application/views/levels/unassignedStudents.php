@@ -19,7 +19,7 @@
                                 <?php echo $student->user->username ?>
                             </th>
                             <th style="font-weight: normal">
-                                <?php echo $student->name ?>
+                                <?php echo $student->name ?> <?php echo $student->fathername ?> <?php echo $student->grfathername ?>
                             </th>
                             <th>
                                 <form name="move_student" action="<?php echo URL::base() ?>classes/move-student" method="POST">

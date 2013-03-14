@@ -394,6 +394,13 @@ Route::set('new_achievement_record', 'achievement-records/new/<student>')
 		'action'     => 'new'
 	));
 
+// router for edit achievement record
+Route::set('edit_achievement_record', 'achievement-records/edit/<id>/<student>/<year>')
+	->defaults(array(
+		'controller' => 'achievementrecords',
+		'action'     => 'edit'
+	));
+
 // router for delete achievement record
 Route::set('delete_achievement_record', 'achievement-records/delete/<id>/<student>/<year>')
 	->defaults(array(
@@ -415,13 +422,19 @@ Route::set('new_disciplinary_record', 'disciplinary-records/new/<student>')
 		'action'     => 'new'
 	));
 
+// router for edit disciplinary record
+Route::set('edit_disciplinary_record', 'disciplinary-records/edit/<id>/<student>/<year>')
+	->defaults(array(
+		'controller' => 'disciplinaryrecords',
+		'action'     => 'edit'
+	));
+
 // router for delete disciplinary record
 Route::set('delete_disciplinary_record', 'disciplinary-records/delete/<id>/<student>/<year>')
 	->defaults(array(
 		'controller' => 'disciplinaryrecords',
 		'action'     => 'delete'
 	));
-
 
 
 // router for achievement teacher records
@@ -436,6 +449,13 @@ Route::set('new_achievement_teacher_record', 'achievement-teacher-records/new/<t
 	->defaults(array(
 		'controller' => 'achievementteacherrecords',
 		'action'     => 'new'
+	));
+
+// router for edit achievement teacher record
+Route::set('edit_achievement_teacher_record', 'achievement-teacher-records/edit/<id>/<teacher>/<year>')
+	->defaults(array(
+		'controller' => 'achievementteacherrecords',
+		'action'     => 'edit'
 	));
 
 // router for delete achievement teacher record
@@ -457,6 +477,13 @@ Route::set('new_disciplinary_teacher_record', 'disciplinary-teacher-records/new/
 	->defaults(array(
 		'controller' => 'disciplinaryteacherrecords',
 		'action'     => 'new'
+	));
+
+// router for edit disciplinary teacher record
+Route::set('edit_disciplinary_teacher_record', 'disciplinary-teacher-records/edit/<id>/<teacher>/<year>')
+	->defaults(array(
+		'controller' => 'disciplinaryteacherrecords',
+		'action'     => 'edit'
 	));
 
 // router for delete disciplinary teacher record
