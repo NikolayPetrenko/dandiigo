@@ -15,9 +15,9 @@ class Controller_Academicrecords extends My_LoggedUserController {
             $data['subjects_records'] = ORM::factory('year_subject')->join('dg_acdmrcrds')->on('dg_acdmrcrds.subject', '=', 'year_subject.id')->where('year_subject.year_id', '=', $data['year'])->where('dg_acdmrcrds.student_id', '=', $data['student']->student_id)->order_by('year_subject.parent_subject')->group_by('dg_acdmrcrds.subject')->find_all();
             $data['class']            = count($data['subjects_records']) > 0 ? $data['subjects_records'][0]->class : '';
         }else{
-            $data['subjects_records'] = ORM::factory('year_subject')->where('class', '=', $data['student']->class->level->name . $data['student']->class->name)->where('year_id', '=', $data['year'])->order_by('parent_subject')->find_all();
-            $data['subjects']         = ORM::factory('class_subject')->select('dg_sbjcts.name', 'dg_sbjcts.pid')->join('dg_sbjcts')->on('dg_sbjcts.id', '=', 'class_subject.subject_id')->where('class_id', '=', $data['student']->class->id)->order_by('dg_sbjcts.pid')->find_all();
-            $data['class']            = $data['student']->class->level->name . $data['student']->class->name;
+            $data['subjects_records'] = ORM::factory('year_subject')->where('class', '=', $data['student']->class->tclass->level->name . $data['student']->class->tclass->name)->where('year_id', '=', $data['year'])->order_by('parent_subject')->find_all();
+            $data['subjects']         = ORM::factory('class_subject')->select('dg_sbjcts.name', 'dg_sbjcts.pid')->join('dg_sbjcts')->on('dg_sbjcts.id', '=', 'class_subject.subject_id')->where('class_id', '=', $data['student']->class->tclass_id)->order_by('dg_sbjcts.pid')->find_all();
+            $data['class']            = $data['student']->class->tclass->level->name . $data['student']->class->tclass->name;
         }
         $data['period']  = ORM::factory('setting', 'academic_year')->find()->value;
         $data['user']    = $this->logget_user;
@@ -35,10 +35,10 @@ class Controller_Academicrecords extends My_LoggedUserController {
         if(Helper_User::getUserRole($this->logget_user) == 'student') return $this->request->redirect('');
         $data['student']        = ORM::factory('student', $this->request->param('student'));
         $data['subject']        = ORM::factory('class_subject')->select('dg_sbjcts.name', 'dg_sbjcts.pid')->join('dg_sbjcts')->on('dg_sbjcts.id', '=', 'class_subject.subject_id')->where('class_subject.id', '=', $this->request->param('subject'))->find();
-        $subj_year              = ORM::factory('year_subject')->where('subject', '=', $data['subject']->name)->where('class', '=', $data['student']->class->level->name . $data['student']->class->name)->where('year_id', '=', $data['student']->end_year)->find();
+        $subj_year              = ORM::factory('year_subject')->where('subject', '=', $data['subject']->name)->where('class', '=', $data['student']->class->tclass->level->name . $data['student']->class->tclass->name)->where('year_id', '=', $data['student']->end_year)->find();
         if(empty($subj_year->id)) {
             $subj_year->year_id        = $data['student']->end_year;
-            $subj_year->class          = $data['student']->class->level->name . $data['student']->class->name;
+            $subj_year->class          = $data['student']->class->tclass->level->name . $data['student']->class->tclass->name;
             $subj_year->subject        = $data['subject']->name;
             $subj_year->parent_subject = $data['subject']->pid == 0 ? NULL : ORM::factory('subject', $data['subject']->pid)->name;
             $subj_year->save();

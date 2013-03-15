@@ -32,7 +32,7 @@
                 <th><?php echo Helper_Main::getClass($level, 'E', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'E', $year) . '">View</a>' : '-' ?></th>
                 <th><?php echo Helper_Main::getClass($level, 'F', $year) ? '<a href="' . URL::base() . 'classes/view/' . Helper_Main::getClass($level, 'F', $year) . '">View</a>' : '-' ?></th>
                 <th>
-                    <a href="<?php echo URL::base() ?>levels/edit/<?php echo $level->id ?>/<?php echo $year ?>">Edit</a>
+                    <a href="<?php echo URL::base() ?>levels/edit/<?php echo $level->id ?>">Edit</a>
                     /
                     <?php if(Helper_User::getUserRole($user) == 'sadmin'): ?>
                     <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>levels/delete/<?php echo $level->id ?>">Delete</a>
@@ -48,5 +48,5 @@
     <p>The levels are not found</p>
 <?php endif; ?>
 <?php if(Helper_User::getUserRole($user) == 'sadmin'): ?>
-    <a href="<?php echo URL::base() ?>levels/new/<?php echo $year ?>">Create level</a>
+    <a href="<?php echo URL::base() ?>levels/new">Create level</a>
 <?php endif;?>

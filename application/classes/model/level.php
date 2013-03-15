@@ -5,7 +5,7 @@ class Model_Level extends ORM {
     protected $_table_name  = 'dg_lvls';
     protected $_has_many = array(
         'template_classes' => array('model' => 'class_template',   'foreign_key' => 'level_id'),
-        'students'       => array('model' => 'student', 'foreign_key' => 'academic_year'),
+        'students'         => array('model' => 'student', 'foreign_key' => 'academic_year'),
     );
     
     public function rules()

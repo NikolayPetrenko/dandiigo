@@ -32,10 +32,20 @@ class Controller_Levels extends My_LoggedUserController {
                 $level = ORM::factory('level')->values($_POST, array('name', 'order'))->create();
                 if($this->request->post('classes')){
                     foreach ($this->request->post('classes') as $value) {
-                        $class           = ORM::factory('class_template');
-                        $class->name     = $value;
-                        $class->level_id = $level->id;
-                        $class->save();
+                        try{
+                            $tclass           = ORM::factory('class_template');
+                            $tclass->name     = $value;
+                            $tclass->level_id = $level->id;
+                            $tclass->save();
+                            $current_year = ORM::factory('academicyear')->where('name', '=', Helper_Main::getCurrentYear())->find()->id;
+                            for($i = $current_year; $i < $current_year + 6; $i++){
+                                $class            = ORM::factory('class');
+                                $class->year_id   = $i;
+                                $class->tclass_id = $tclass->id;
+                                $class->save();
+                            }
+                        }
+                        catch (Kohana_Database_Exception $e){}
                     }
                 }
                 $this->request->redirect('levels/list');
@@ -56,7 +66,6 @@ class Controller_Levels extends My_LoggedUserController {
     public function action_edit()
     {
         if(Helper_User::getUserRole($this->logget_user) == 'teacher' || Helper_User::getUserRole($this->logget_user) == 'student') return $this->request->redirect('');
-        $data['year']  = $this->request->param('year');
         if ($this->request->post()) {
             try {
                 $level = ORM::factory('level', $this->request->param('id'));
@@ -74,28 +83,37 @@ class Controller_Levels extends My_LoggedUserController {
                 }
                 if($this->request->post('classes')){
                     foreach ($this->request->post('classes') as $value){
-                        $class           = ORM::factory('class_template');
-                        $class->name     = $value;
-                        $class->level_id = $level->id;
-                        $class->year_id  = $data['year'];
                         try{
-                            $class->save();
+                            $tclass           = ORM::factory('class_template');
+                            $tclass->name     = $value;
+                            $tclass->level_id = $level->id;
+                            $tclass->save();
+                            $current_year = ORM::factory('academicyear')->where('name', '=', Helper_Main::getCurrentYear())->find()->id;
+                            for($i = $current_year; $i < $current_year + 6; $i++){
+                                $class            = ORM::factory('class');
+                                $class->year_id   = $i;
+                                $class->tclass_id = $tclass->id;
+                                $class->save();
+                            }
                         }
                         catch (Kohana_Database_Exception $e){}
                     }
                 }
                 if($this->request->post('old_classes')){
                     foreach ($this->request->post('old_classes') as $key => $value) {
-                        $class  = ORM::factory('class_template', $key);
-                        $class->name = $value;
-                        $class->save();
+                        $tclass  = ORM::factory('class_template', $key);
+                        $tclass->name = $value;
+                        $tclass->save();
                     }
                 }
                 if($this->request->post('delete_classes')){
                     foreach ($this->request->post('delete_classes') as $key => $value) {
-                        $class  = ORM::factory('class_template', $key);
-                        Helper_User::deleteUsersFromClass($class);
-                        $class->delete();
+                        $tclass  = ORM::factory('class_template', $key);
+                        $classes = $tclass->classes->find_all();
+                        foreach($classes as $class){
+                            Helper_User::deleteUsersFromClass($class);
+                        }
+                        $tclass->delete();
                     }
                 }
                 $data['success'] = 'Level successful edit';
@@ -107,7 +125,7 @@ class Controller_Levels extends My_LoggedUserController {
         $data['user']  = $this->logget_user;
         $data['level'] = ORM::factory('level', $this->request->param('id'));
         if(empty($data['level']->id)) $this->request->redirect('');
-        $data['classes'] = $data['level']->template_classes->where('year_id', '=', $data['year'])->order_by('name')->find_all();
+        $data['classes'] = $data['level']->template_classes->order_by('name')->find_all();
         Helper_Output::factory()->link_js('class/templates');
         $this->setTitle('Edit Level')
             ->view('levels/editLevel', $data)
@@ -121,7 +139,7 @@ class Controller_Levels extends My_LoggedUserController {
     {
         if(Helper_User::getUserRole($this->logget_user) == 'teacher' || Helper_User::getUserRole($this->logget_user) == 'student') return $this->request->redirect('');
         $data['level']     = ORM::factory('level', $this->request->param('id'));
-        $data['all_class'] = $data['level']->template_classes->where('year_id', '=', $this->request->param('year'))->find_all();
+        $data['all_class'] = ORM::factory('class')->join('dg_tmpl_clsss')->on('dg_tmpl_clsss.id', '=', 'class.tclass_id')->where('dg_tmpl_clsss.level_id', '=', $data['level']->id)->where('class.year_id', '=', $this->request->param('year'))->find_all();
         $data['students']  = $data['level']->students->where('end_year', '=', $this->request->param('year'))->where('class_id', '=', NULL)->find_all();
         $data['year']      = $this->request->param('year');
         Helper_Output::factory()->link_js('user/index');
@@ -140,7 +158,7 @@ class Controller_Levels extends My_LoggedUserController {
         $students_ids    = explode(',', $this->request->post('students'));
         $students_mens   = ORM::factory('student')->where('sex', '=', '0')->where('student_id', 'IN', $students_ids)->find_all();
         $students_womens = ORM::factory('student')->where('sex', '=', '1')->where('student_id', 'IN', $students_ids)->find_all();
-        $classes         = $data['level']->template_classes->where('year_id', '=', $this->request->param('year'))->find_all()->as_array();
+        $classes         = ORM::factory('class')->join('dg_tmpl_clsss')->on('dg_tmpl_clsss.id', '=', 'class.tclass_id')->where('dg_tmpl_clsss.level_id', '=', $data['level']->id)->where('class.year_id', '=', $this->request->param('year'))->find_all()->as_array();
         Helper_User::autoAssignedClass($students_mens, $students_womens, $classes);
         $this->request->redirect('levels/list');
     }    
@@ -178,10 +196,13 @@ class Controller_Levels extends My_LoggedUserController {
     {
         if(Helper_User::getUserRole($this->logget_user) != 'sadmin') return $this->request->redirect('');
         $level   = ORM::factory('level', $this->request->param('id'));
-        $classes = $level->template_classes->find_all();
-        if(count($classes) > 0){
-            foreach ($classes as $class){
-                Helper_User::deleteUsersFromClass($class);
+        $tclasses = $level->template_classes->find_all();
+        if(count($tclasses) > 0){
+            foreach ($tclasses as $tclass){
+                $classes = $tclass->classes->find_all();
+                foreach($classes as $class){
+                    Helper_User::deleteUsersFromClass($class);
+                }
             }
         }
         if($level->id){

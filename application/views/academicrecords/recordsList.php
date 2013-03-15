@@ -2,7 +2,7 @@
 <h3>Name: <?php echo $student->user->username ?> (<?php echo $student->name ?> <?php echo $student->fathername ?> <?php echo $student->grfathername ?>)</h3>
 <?php if(Helper_User::getUserRole($user) != 'student'): ?>
     <?php if(!empty($subjects) && count($subjects) > 0): ?>
-        <h3>Current Class: <?php echo $student->class->level->name . $student->class->name ?></h3>
+        <h3>Current Class: <?php echo $student->class->tclass->level->name . $student->class->tclass->name ?></h3>
         <table class="table table-condensed" style="width: 250px; border: 1px solid black">
                 <thead style="background-color: gainsboro">
                     <tr>
@@ -17,7 +17,7 @@
                             <?php echo $subject->pid == 0 ? $subject->name : ORM::factory('subject', $subject->pid)->name . ' | ' . $subject->name ?>
                         </th>
                         <th>
-                            <?php if(Helper_User::getUserRole($user) == 'admin' || Helper_User::getUserRole($user) == 'sadmin' || (Helper_User::getUserRole($user) == 'teacher' && ($user->teachers->find()->teacher_id == $subject->teacher_id || (!is_null($current_class) && $user->id == ORM::factory('class_template', $current_class)->teacher_id)))): ?>
+                            <?php if(Helper_User::getUserRole($user) == 'admin' || Helper_User::getUserRole($user) == 'sadmin' || (Helper_User::getUserRole($user) == 'teacher' && ($user->teachers->find()->teacher_id == $subject->teacher_id || (!is_null($current_class) && $user->id == ORM::factory('class', $current_class)->tclass->teacher_id)))): ?>
                                 <a href="<?php echo URL::base() ?>academic-records/new/<?php echo $student->student_id ?>/<?php echo $subject->id ?>">Create record</a>
                             <?php endif; ?>
                         </th>
@@ -84,7 +84,7 @@
                             <?php if(!empty($rcrds[$i])): ?>
                                 <th>
                                     <?php echo Helper_Main::getRatingFromRecord($rcrds[$i]) ?>
-                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class_template', $current_class)->teacher_id))): ?>
+                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->tclass->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class', $current_class)->tclass->teacher_id))): ?>
                                         <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>academic-records/delete/<?php echo $rcrds[$i]->id ?>/<?php echo $student->student_id ?>/<?php echo $year ?>" class="delete-subj" style="float: right"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a>
                                     <?php endif; ?>
                                 </th>
@@ -169,7 +169,7 @@
                             <?php if(!empty($rcrds[$i])): ?>
                                 <th>
                                     <?php echo Helper_Main::getRatingFromRecord($rcrds[$i]) ?>
-                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class_template', $current_class)->teacher_id))): ?>
+                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->tclass->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class', $current_class)->tclass->teacher_id))): ?>
                                         <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>academic-records/delete/<?php echo $rcrds[$i]->id ?>/<?php echo $student->student_id ?>/<?php echo $year ?>" class="delete-subj" style="float: right"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a>
                                     <?php endif; ?>
                                 </th>
@@ -258,7 +258,7 @@
                             <?php if(!empty($rcrds[$i])): ?>
                                 <th>
                                     <?php echo Helper_Main::getRatingFromRecord($rcrds[$i]) ?>
-                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class_template', $current_class)->teacher_id))): ?>
+                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->tclass->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class', $current_class)->tclass->teacher_id))): ?>
                                         <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>academic-records/delete/<?php echo $rcrds[$i]->id ?>/<?php echo $student->student_id ?>/<?php echo $year ?>" class="delete-subj" style="float: right"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a>
                                     <?php endif; ?>
                                 </th>
@@ -357,7 +357,7 @@
                             <?php if(!empty($rcrds[$i])): ?>
                                 <th>
                                     <?php echo Helper_Main::getRatingFromRecord($rcrds[$i]) ?>
-                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class_template', $current_class)->teacher_id))): ?>
+                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->tclass->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class', $current_class)->tclass->teacher_id))): ?>
                                         <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>academic-records/delete/<?php echo $rcrds[$i]->id ?>/<?php echo $student->student_id ?>/<?php echo $year ?>" class="delete-subj" style="float: right"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a>
                                     <?php endif; ?>
                                 </th>
@@ -479,7 +479,7 @@
                             <?php if(!empty($rcrds[$i])): ?>
                                 <th>
                                     <?php echo Helper_Main::getRatingFromRecord($rcrds[$i]) ?>
-                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class_template', $current_class)->teacher_id))): ?>
+                                    <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin' || (Helper_User::getUserRole($user) == 'teacher' && !empty($subjects) && $user->teachers->find()->teacher_id == ORM::factory('class_subject')->join('dg_sbjcts')->on('class_subject.subject_id', '=', 'dg_sbjcts.id')->where('dg_sbjcts.name', '=', $subject->subject)->where('class_subject.class_id', '=', $student->class->tclass->id)->find()->teacher_id) || (Helper_User::getUserRole($user) == 'teacher' && (!is_null($current_class) && $user->id == ORM::factory('class', $current_class)->tclass->teacher_id))): ?>
                                         <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>academic-records/delete/<?php echo $rcrds[$i]->id ?>/<?php echo $student->student_id ?>/<?php echo $year ?>" class="delete-subj" style="float: right"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a>
                                     <?php endif; ?>
                                 </th>

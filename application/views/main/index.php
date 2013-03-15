@@ -1,7 +1,7 @@
 <p>Hello <strong><?php echo $user_info->name ?></strong></p>
 <?php if(Helper_User::getUserRole($user) == 'student'): ?>
     <?php if(!is_null($user->students->find()->class_id)): ?>
-        <p>Current class: <a href="<?php echo URL::base() ?>classes/view/<?php echo $user->students->find()->class_id ?>"><?php echo $user->students->find()->class->level->name . $user->students->find()->class->name ?></a></p>
+        <p>Current class: <a href="<?php echo URL::base() ?>classes/view/<?php echo $user->students->find()->class_id ?>"><?php echo $user->students->find()->class->tclass->level->name . $user->students->find()->class->tclass->name ?></a></p>
     <?php endif;?>
     <a href="<?php echo URL::base() ?>academic-records/list/<?php echo $user->id ?>">Academic Record</a> 
     <br>

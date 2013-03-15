@@ -27,7 +27,7 @@
                                     <span style="font-weight: normal"> <?php echo $level->name ?></span>
                                     <select name="class">
                                         <?php foreach($all_class as $cls): ?>
-                                            <option <?php echo $cls->id == $student->class_id ? 'selected' : '' ?> value="<?php echo $cls->id ?>"><?php echo $cls->name ?></option>
+                                            <option <?php echo $cls->id == $student->class_id ? 'selected' : '' ?> value="<?php echo $cls->id ?>"><?php echo $cls->tclass->name ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <input type="submit" value="Assigned">

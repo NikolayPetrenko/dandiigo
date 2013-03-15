@@ -5,7 +5,7 @@
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
-<form class="form-registrate" name="level_new" action="<?php echo URL::base() ?>levels/new/<?php echo $year ?>" method="POST">
+<form class="form-registrate" name="level_new" action="<?php echo URL::base() ?>levels/new" method="POST">
     <fieldset>
         <div class="group-field-block">
             <label for="name"><strong>Name</strong></label>

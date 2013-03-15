@@ -1,18 +1,18 @@
-<h2><?php echo $level->name . $class->name ?></h2>
+<h2><?php echo $level->name . $tclass->name ?></h2>
 <?php if(Helper_User::getUserRole($user) == 'admin' || Helper_User::getUserRole($user) == 'sadmin'): ?>
     <div style="margin-left: 10px; margin-bottom: 20px">
         <?php $all_teachers = ORM::factory('teacher')->find_all() ?>
         <?php if(count($all_teachers) > 0): ?>
             <form name="room_teacher" action="<?php echo URL::base() ?>classes/change-teacher" method="POST">
-                <input type="hidden" name="class" value="<?php echo $class->id ?>">
+                <input type="hidden" name="class" value="<?php echo $tclass->id ?>">
                 <select name="teacher">
-                    <option <?php echo $class->teacher_id == 0 ? 'selected' : '' ?> value="0">None</option>
+                    <option <?php echo $tclass->teacher_id == 0 ? 'selected' : '' ?> value="0">None</option>
                     <?php foreach($all_teachers as $tchr): ?>
-                        <option <?php echo $tchr->teacher_id == $class->teacher_id ? 'selected' : '' ?> value="<?php echo $tchr->teacher_id ?>"><?php echo $tchr->name . ' ' . $tchr->fathername . ' ' . $tchr->grfathername . ' (' . $tchr->user->username . ')' ?></option>
+                        <option <?php echo $tchr->teacher_id == $tclass->teacher_id ? 'selected' : '' ?> value="<?php echo $tchr->teacher_id ?>"><?php echo $tchr->name . ' ' . $tchr->fathername . ' ' . $tchr->grfathername . ' (' . $tchr->user->username . ')' ?></option>
                     <?php endforeach; ?>
                 </select>
                 <br>
-                <input type="submit" value="<?php echo $class->teacher_id == 0 ? 'Set' : 'Change' ?> Home Room Teacher">
+                <input type="submit" value="<?php echo $tclass->teacher_id == 0 ? 'Set' : 'Change' ?> Home Room Teacher">
             </form>
         <?php else: ?>
             <p>No teachers for this subject</p>
@@ -37,7 +37,7 @@
                     </th>
                     <th>
                         <?php if(Helper_User::getUserRole($user) == 'sadmin' || Helper_User::getUserRole($user) == 'admin'): ?>
-                            <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>classes/delete-subject/<?php echo $subject->subject_id ?>/<?php echo $class->id ?>" class="delete-subj"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a>
+                            <a onclick="if(!confirm('Really delete?')) return false" href="<?php echo URL::base() ?>classes/delete-subject/<?php echo $subject->subject_id ?>/<?php echo $tclass->id ?>" class="delete-subj"><img src="<?php echo URL::base() ?>img/delete_icon.png"></a>
                         <?php endif; ?>
                     </th>
                     <th>
@@ -130,7 +130,7 @@
                                     <span style="font-weight: normal"> <?php echo $level->name ?></span>
                                     <select name="class">
                                         <?php foreach($all_class as $cls): ?>
-                                            <option <?php echo $cls->id == $student->class_id ? 'selected' : '' ?> value="<?php echo $cls->id ?>"><?php echo $cls->name ?></option>
+                                            <option <?php echo $cls->id == $student->class_id ? 'selected' : '' ?> value="<?php echo $cls->id ?>"><?php echo $cls->tclass->name ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <input type="submit" value="Move student">

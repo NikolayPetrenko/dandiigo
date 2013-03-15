@@ -151,7 +151,8 @@ class Helper_Main
     
     public static function getClass($level, $name, $year)
     {
-        $class = $level->template_classes->where('year_id', '=', $year)->where('name', '=', $name)->find();
+        $tclass = $level->template_classes->where('name', '=', $name)->find();
+        $class = ORM::factory('class')->where('tclass_id', '=', $tclass->id)->where('year_id', '=', $year)->find();
         return !empty($class->id) ? $class->id : FALSE;
     }
     

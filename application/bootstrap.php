@@ -211,14 +211,14 @@ Route::set('list_level', 'levels/list(/<year>)')
 	));
 
 // router for edit level
-Route::set('edit_level', 'levels/edit/<id>/<year>')
+Route::set('edit_level', 'levels/edit/<id>')
 	->defaults(array(
 		'controller' => 'levels',
 		'action'     => 'edit'
 	));
 
 // router for edit level
-Route::set('new_level', 'levels/new/<year>')
+Route::set('new_level', 'levels/new')
 	->defaults(array(
 		'controller' => 'levels', 
 		'action'     => 'new'
